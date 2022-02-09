@@ -1,0 +1,19 @@
+---
+Name: syntro-sendy-elemental-pre
+---
+Syntro\SilverStripeSendy\Model\SendyCampaign:
+  allowed_elements: null
+
+---
+Name: syntro-sendy-elemental
+After:
+  - syntro-sendy-elemental-pre
+---
+Syntro\SilverStripeSendy\Model\SendyCampaign:
+  elemental_keep_content_field: true
+  allowed_elements: []
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
+SilverStripe\Control\Director:
+  rules:
+    'sendycampaign_preview': 'Syntro\SilverStripeSendy\Controller\CampaignPreviewController'
