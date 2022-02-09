@@ -11,6 +11,10 @@ de:
     FIELDS_FromEmail: Von E-Mail
     FIELDS_ReplyToEmail: ReplyTo E-Mail
     FIELDS_Subject: Betreff
+    FIELDERROR_Title: Ein Kampagnentitel ist erforderlich
+    FIELDERROR_FromName: Ein Name des Absenders ist erforderlich
+    FIELDERROR_FromEmail: Eine E-Mail des Absenders ist erforderlich
+    FIELDERROR_Subject: Ein Betreff ist erforderlich
     SUMMARY_Transferred: Hochgeladen
     PREVIEW: Vorschau
     UPLOAD: Zu Sendy hochladen

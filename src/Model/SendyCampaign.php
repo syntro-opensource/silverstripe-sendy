@@ -8,6 +8,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Security\Permission;
 use SilverStripe\Security\Member;
 use SilverStripe\ORM\DataObject;
+use SilverStripe\ORM\ValidationResult;
 use SilverStripe\ORM\FieldType\DBHTMLText;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
@@ -172,6 +173,45 @@ class SendyCampaign extends DataObject
             );
         }
         return $fields;
+    }
+
+    /**
+     * validate - check that all necessary fields are present.
+     *
+     * @return ValidationResult
+     */
+    public function validate()
+    {
+        $result = parent::validate();
+        if (!$this->Title) {
+            $result->addFieldError(
+                'Title',
+                 _t(__CLASS__ . '.FIELDERROR_Title', 'A title is required'),
+                  ValidationResult::TYPE_ERROR
+              );
+        }
+        if (!$this->FromName) {
+            $result->addFieldError(
+                'FromName',
+                 _t(__CLASS__ . '.FIELDERROR_FromName', 'A sender name is required'),
+                  ValidationResult::TYPE_ERROR
+              );
+        }
+        if (!$this->FromEmail) {
+            $result->addFieldError(
+                'FromEmail',
+                 _t(__CLASS__ . '.FIELDERROR_FromEmail', 'A sender email is required'),
+                  ValidationResult::TYPE_ERROR
+              );
+        }
+        if (!$this->Subject) {
+            $result->addFieldError(
+                'Subject',
+                 _t(__CLASS__ . '.FIELDERROR_Subject', 'A subject is required'),
+                  ValidationResult::TYPE_ERROR
+              );
+        }
+        return $result;
     }
 
     /**

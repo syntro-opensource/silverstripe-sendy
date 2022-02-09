@@ -11,6 +11,10 @@ en:
     FIELDS_FromEmail: From Email
     FIELDS_ReplyToEmail: Reply To Email
     FIELDS_Subject: Subject
+    FIELDERROR_Title: A title is required
+    FIELDERROR_FromName: A sender name is required
+    FIELDERROR_FromEmail: A sender email is required
+    FIELDERROR_Subject: A subject is required
     SUMMARY_Transferred: Uploaded
     PREVIEW: Preview
     UPLOAD: Upload to Sendy
