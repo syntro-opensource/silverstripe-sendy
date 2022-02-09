@@ -8,8 +8,6 @@ use SilverStripe\Control\HTTPResponse;
 use SilverStripe\Control\HTTPRequest;
 use Syntro\SilverStripeSendy\Model\SendyCampaign;
 
-
-
 /**
  * Allows a user to preview a newsletter.
  *
@@ -53,5 +51,4 @@ class CampaignPreviewController extends Controller
             'You need to be logged in to preview Sendy campaigns.'
         ));
     }
-
 }

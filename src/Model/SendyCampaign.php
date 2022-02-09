@@ -1,7 +1,6 @@
 <?php
 namespace Syntro\SilverStripeSendy\Model;
 
-
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\LiteralField;
@@ -71,8 +70,8 @@ class SendyCampaign extends DataObject
     public function providePermissions()
     {
         return [
-            self::PERMISSION_VIEW => _t(__CLASS__ . '.PERM_VIEW','View and preview campaigns'),
-            self::PERMISSION_EDIT => _t(__CLASS__ . '.PERM_EDIT','Edit sendy campaigns')
+            self::PERMISSION_VIEW => _t(__CLASS__ . '.PERM_VIEW', 'View and preview campaigns'),
+            self::PERMISSION_EDIT => _t(__CLASS__ . '.PERM_EDIT', 'Edit sendy campaigns')
         ];
     }
 
@@ -138,11 +137,11 @@ class SendyCampaign extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                TextField::create('Title',$this->fieldLabel('Title')),
-                TextField::create('FromName',$this->fieldLabel('FromName')),
-                EmailField::create('FromEmail',$this->fieldLabel('FromEmail')),
-                EmailField::create('ReplyToEmail',$this->fieldLabel('ReplyToEmail')),
-                TextField::create('Subject',$this->fieldLabel('Subject'))
+                TextField::create('Title', $this->fieldLabel('Title')),
+                TextField::create('FromName', $this->fieldLabel('FromName')),
+                EmailField::create('FromEmail', $this->fieldLabel('FromEmail')),
+                EmailField::create('ReplyToEmail', $this->fieldLabel('ReplyToEmail')),
+                TextField::create('Subject', $this->fieldLabel('Subject'))
             ],
             'ElementalArea'
         );
@@ -188,7 +187,7 @@ class SendyCampaign extends DataObject
         $transferAction->setButtonIcon('upload');
         $transferAction->setButtonType('outline-dark');
         $transferAction->setShouldRefresh(true);
-        $transferAction->setConfirmation( _t(__CLASS__ . '.UPLOADCONFIRM', 'You will not be able to edit this campaign anymore. Are you sure?'));
+        $transferAction->setConfirmation(_t(__CLASS__ . '.UPLOADCONFIRM', 'You will not be able to edit this campaign anymore. Are you sure?'));
 
         if ($this->canView()) {
             $actions->push($previewLink);
@@ -235,7 +234,7 @@ class SendyCampaign extends DataObject
      */
     public function Link()
     {
-        return '/sendycampaign_preview/'.$this->ID;
+        return '/sendycampaign_preview/' . $this->ID;
     }
 
     /**

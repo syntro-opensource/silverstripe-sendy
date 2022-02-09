@@ -4,9 +4,10 @@ namespace Syntro\SilverStripeSendy;
 
 use SilverStripe\Core\Config\Configurable;
 
-
 /**
  * Connector which allows the creation of a campaign
+ *
+ * @author Matthias Leutenegger
  */
 class Connector
 {
@@ -29,6 +30,11 @@ class Connector
 
 
 
+    /**
+     * __construct - constructor
+     *
+     * @return void
+     */
     function __construct()
     {
         $config = static::config();
@@ -45,6 +51,12 @@ class Connector
     }
 
 
+    /**
+     * createCampaign - create a campaign in the remote instance
+     *
+     * @param  array $body array with parameters
+     * @return array
+     */
     public function createCampaign($body)
     {
 
@@ -65,9 +77,15 @@ class Connector
                     'message' => $result
                 ];
         }
-
     }
 
+    /**
+     * buildAndSend - actually send the request
+     *
+     * @param  string $path where to post to
+     * @param  array  $body what to post
+     * @return string
+     */
     private function buildAndSend($path, array $body)
     {
         //error checking
@@ -82,7 +100,7 @@ class Connector
         //build a query using the $content
         $postdata = http_build_query($body);
 
-        $ch = curl_init(static::config()->get('installation_url') .'/'. $path);
+        $ch = curl_init(static::config()->get('installation_url') . '/' . $path);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/x-www-form-urlencoded"));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);

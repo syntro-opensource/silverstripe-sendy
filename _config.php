@@ -3,7 +3,6 @@
 use SilverStripe\Forms\HTMLEditor\TinyMCEConfig;
 use SilverStripe\Core\Manifest\ModuleLoader;
 
-
 // call_user_func(function () {
 //     $module = ModuleLoader::inst()->getManifest()->getModule('silverstripe/cms');
 //

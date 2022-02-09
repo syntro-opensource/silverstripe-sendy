@@ -45,7 +45,7 @@ class SendyAdmin extends ModelAdmin
     /**
      * getEditForm - get the displayed edit form
      *
-     * @param  int $id = null     the id of the record
+     * @param  int       $id     = null     the id of the record
      * @param  FieldList $fields = null the fields
      * @return Form
      */
@@ -63,5 +63,4 @@ class SendyAdmin extends ModelAdmin
         }
         return $form;
     }
-
 }
