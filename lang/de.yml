@@ -1,0 +1,21 @@
+de:
+  Syntro\SilverStripeSendy\Admin\SendyAdmin:
+    MENUTITLE: Newsletter
+  Syntro\SilverStripeSendy\Controller\CampaignPreviewController:
+    PLEASELOGIN: Du must eingeloggt sein, um Sendy Kampagnen anzuschauen.
+  Syntro\SilverStripeSendy\Model\SendyCampaign:
+    PERM_VIEW: Sendy Kampagnen ansehen
+    PERM_EDIT: Sendy Kampagnen bearbeiten
+    FIELDS_Title: Kampagnentitel
+    FIELDS_FromName: Von Name
+    FIELDS_FromEmail: Von E-Mail
+    FIELDS_ReplyToEmail: ReplyTo E-Mail
+    FIELDS_Subject: Betreff
+    SUMMARY_Transferred: Hochgeladen
+    PREVIEW: Vorschau
+    UPLOAD: Zu Sendy hochladen
+    UPLOADCONFIRM: Nach dem Hochladen kannst du diese Kampagne nicht mehr bearbeiten. Bist du sicher?
+    UPLOADSUCCESS: Kampagne "{title}" erfolgreich hochgeladen"
+    CAMPAIGNTRANSFERREDINFO:
+      Diese Kampagne wurde zur Sendy Instanz hochgeladen.
+      Du kannst sie dort weiter bearbeiten.
