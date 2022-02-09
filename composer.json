@@ -11,7 +11,8 @@
     "require": {
         "silverstripe/cms": "^4",
         "silverstripe/framework": "^4",
-        "dnadesign/silverstripe-elemental": "^4"
+        "dnadesign/silverstripe-elemental": "^4",
+        "lekoala/silverstripe-cms-actions": "^1.2"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.0",
