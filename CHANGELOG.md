@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+<a name="1.0.1"></a>
+## [1.0.1] - 2022-02-09
+### 🐞 Fixed
+- text alignment works without classes
+
+
 <a name="1.0.0"></a>
 ## 1.0.0 - 2022-02-09
 ### 🍰 Added
@@ -20,4 +26,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - doc states the fact that `Title` != `Subject`
 
 
-[Unreleased]: https://github.com/syntro-opensource/silvershare/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/syntro-opensource/silvershare/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/syntro-opensource/silvershare/compare/1.0.0...1.0.1
