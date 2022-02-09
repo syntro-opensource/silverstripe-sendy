@@ -26,6 +26,8 @@ Update the Layout template by adding the following file:
 
 This builds the encapsulating Layout for every Newsletter.
 
+> Note: Use the `$Subject` in the title tag
+
 ## Creating Blocks
 Creating blocks is done the same way as regular blocks used by the
 [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental) module,
