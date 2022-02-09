@@ -6,7 +6,59 @@ the [silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemen
 We do not provide default blocks, but it should be sufficiently easy to create
 new Blocks following the elemental documentation.
 
-## `HTMLEditorConfig`
+## Layout Template
+Update the Layout template by adding the following file:
+
+```html
+<!-- mysite/templates/Syntro/SilverStripeSendy/Model/SendyCampaign.ss -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- ... -->
+    </head>
+    <body>
+        <!-- ... -->
+        $ElementalArea
+        <!-- ... -->
+    </body>
+</html>
+```
+
+This builds the encapsulating Layout for every Newsletter.
+
+## Creating Blocks
+Creating blocks is done the same way as regular blocks used by the
+[silverstripe-elemental](https://github.com/silverstripe/silverstripe-elemental) module,
+with some gotchas explained here.
+
+### Using a Custom Holder Template
+Your Newsletter blocks should use a custom holder template which is different from
+the one used by your page ones. To do this, add this to your newsletter blocks:
+
+```php
+/**
+ * @var string
+ */
+private static $controller_template = 'NewsletterElementHolder';
+```
+
+Then, create a file `templates/DNADesign/Elemental/Layout/NewsletterElementHolder.ss`
+which uses the correct holder markup.
+
+### Limit Blocks to Newsletter Use
+You should always disable the blocks you create for newsletters in regular pages
+and only enable newsletter blocks for sendy campaigns.
+```yml
+Syntro\SilverStripeSendy\Model\SendyCampaign:
+  allowed_elements:
+    - Model\Elements\Newsletter\Content
+# Use your actual class here
+ElementalPage:
+  disallowed_elements:
+    - Model\Elements\Newsletter\Content
+```
+
+### `HTMLEditorConfig`
 As Newsletters do not have the same capabilities as pages in the CMS do, we have
 to apply a custom config to all HTMLEditor fields. Do this by adding:
 
