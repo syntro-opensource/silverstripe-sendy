@@ -46,6 +46,13 @@ Then, create a file `templates/DNADesign/Elemental/Layout/NewsletterElementHolde
 which uses the correct holder markup.
 
 ### Limit Blocks to Newsletter Use
+It is important to understand the difference between a block in your newsletter
+compared to a block in your regular page layout. A block utilized in a newsletter
+campaign must not use external css, unlike a regular block. It is therefore
+necessary to limit the elements used for newsletter to only appear on the
+campaign. For this, follow the docs of the elemental module:
+https://github.com/silverstripe/silverstripe-elemental#limit-allowed-elements
+
 You should always disable the blocks you create for newsletters in regular pages
 and only enable newsletter blocks for sendy campaigns.
 ```yml
@@ -66,11 +73,3 @@ to apply a custom config to all HTMLEditor fields. Do this by adding:
 $contentField = $fields->fieldByName('Root.Main.HTML');
 $contentField->setEditorConfig('newsletter');
 ```
-
-## Limit elements
-It is important to understand the difference between a block in your newsletter
-compared to a block in your regular page layout. A block utilized in a newsletter
-campaign must not use external css, unlike a regular block. It is therefore
-necessary to limit the elements used for newsletter to only appear on the
-campaign. For this, follow the docs of the elemental module:
-https://github.com/silverstripe/silverstripe-elemental#limit-allowed-elements
