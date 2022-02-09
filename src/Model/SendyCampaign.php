@@ -2,6 +2,8 @@
 namespace Syntro\SilverStripeSendy\Model;
 
 
+use SilverStripe\Forms\EmailField;
+use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\Security\Permission;
 use SilverStripe\ORM\DataObject;
@@ -12,21 +14,15 @@ use LeKoala\CmsActions\CustomLink;
 use Syntro\SilverStripeSendy\Connector;
 
 /**
+ * represents a campaign that can be transferred
  *
+ * @author Matthias Leutenegger
  */
 class SendyCampaign extends DataObject
 {
 
     const PERMISSION_VIEW = 'SendyCampaign_PERMISSION_VIEW';
     const PERMISSION_EDIT = 'SendyCampaign_PERMISSION_EDIT';
-
-    /**
-     * Add default values to database
-     *  @var array
-     */
-    private static $defaults = [
-        '' => ''
-    ];
 
     /**
      * Defines the database table name
@@ -55,7 +51,7 @@ class SendyCampaign extends DataObject
     private static $summary_fields = [
         'Title' => 'Title',
         'Subject' => 'Subject',
-        'summarizedLabel' => 'Is Transferred'
+        'summarizedLabel' => 'summarizedLabel'
     ];
 
     /**
@@ -67,17 +63,22 @@ class SendyCampaign extends DataObject
         'Subject'
     ];
 
-    public function providePermissions($value='')
+    /**
+     * providePermissions - provides CMS permissions
+     *
+     * @return array
+     */
+    public function providePermissions()
     {
         return [
-            self::PERMISSION_VIEW => 'View and preview campaigns',
-            self::PERMISSION_EDIT => 'Edit sendy campaigns'
+            self::PERMISSION_VIEW => _t(__CLASS__ . '.PERM_VIEW','View and preview campaigns'),
+            self::PERMISSION_EDIT => _t(__CLASS__ . '.PERM_EDIT','Edit sendy campaigns')
         ];
     }
 
     /**
      * DataObject view permissions
-     * @param Member $member
+     * @param Member $member the member to be checked
      * @return boolean
      */
     public function canView($member = null)
@@ -87,7 +88,7 @@ class SendyCampaign extends DataObject
 
     /**
      * DataObject edit permissions
-     * @param Member $member
+     * @param Member $member the member to be checked
      * @return boolean
      */
     public function canEdit($member = null)
@@ -97,12 +98,30 @@ class SendyCampaign extends DataObject
 
     /**
      * DataObject delete permissions
-     * @param Member $member
+     * @param Member $member the member to be checked
      * @return boolean
      */
     public function canDelete($member = null)
     {
         return !$this->IsTransferred && Permission::check(self::PERMISSION_EDIT, 'any', $member);
+    }
+
+    /**
+     * fieldLabels - get the field label titles
+     *
+     * @param  bool $includerelations = true wether to include relations
+     * @return array
+     */
+    public function fieldLabels($includerelations = true)
+    {
+        $labels = parent::fieldLabels($includerelations);
+        $labels['Title'] = _t(__CLASS__ . '.FIELDS_Title', 'Campaign Title');
+        $labels['FromName'] = _t(__CLASS__ . '.FIELDS_FromName', 'From Name');
+        $labels['FromEmail'] = _t(__CLASS__ . '.FIELDS_FromEmail', 'From Email');
+        $labels['ReplyToEmail'] = _t(__CLASS__ . '.FIELDS_ReplyToEmail', 'Reply To Email');
+        $labels['Subject'] = _t(__CLASS__ . '.FIELDS_Subject', 'Subject');
+        $labels['summarizedLabel'] = _t(__CLASS__ . '.SUMMARY_Transferred', 'Uploaded');
+        return $labels;
     }
 
     /**
@@ -116,6 +135,17 @@ class SendyCampaign extends DataObject
         $fields->removeByName([
             'IsTransferred'
         ]);
+        $fields->addFieldsToTab(
+            'Root.Main',
+            [
+                TextField::create('Title',$this->fieldLabel('Title')),
+                TextField::create('FromName',$this->fieldLabel('FromName')),
+                EmailField::create('FromEmail',$this->fieldLabel('FromEmail')),
+                EmailField::create('ReplyToEmail',$this->fieldLabel('ReplyToEmail')),
+                TextField::create('Subject',$this->fieldLabel('Subject'))
+            ],
+            'ElementalArea'
+        );
         if ($this->IsTransferred) {
             $fields->removeByName([
                 'ElementalArea',
@@ -149,25 +179,31 @@ class SendyCampaign extends DataObject
     public function getCMSActions()
     {
         $actions = parent::getCMSActions();
-        $previewLink = CustomLink::create('preview', 'Preview', $this->Link());
+        $previewLink = CustomLink::create('preview', _t(__CLASS__ . '.PREVIEW', 'Preview'), $this->Link());
         $previewLink->setButtonIcon('eye');
         $previewLink->setButtonType('outline-info');
         $previewLink->setNewWindow(true);
-        $actions->push($previewLink);
 
-        $transferAction = CustomAction::create("doTransfer", "Upload to Sendy");
+        $transferAction = CustomAction::create("doTransfer", _t(__CLASS__ . '.UPLOAD', 'Upload to Sendy'));
         $transferAction->setButtonIcon('upload');
-        $transferAction->setButtonType('outline-success');
+        $transferAction->setButtonType('outline-dark');
         $transferAction->setShouldRefresh(true);
-        $transferAction->setConfirmation('You will not be able to edit this campaign anymore. Are you sure?');
-        $actions->push($transferAction);
+        $transferAction->setConfirmation( _t(__CLASS__ . '.UPLOADCONFIRM', 'You will not be able to edit this campaign anymore. Are you sure?'));
+
+        if ($this->canView()) {
+            $actions->push($previewLink);
+        }
+        if (!$this->IsTransferred && $this->canEdit()) {
+            $actions->push($transferAction);
+        }
+
         return $actions;
     }
 
     /**
      * doTransfer - this transfers the campaign to the configured sendy instance
      *
-     * @return {type}  description
+     * @return string|bool
      */
     public function doTransfer()
     {
@@ -189,7 +225,7 @@ class SendyCampaign extends DataObject
         }
         $this->IsTransferred = true;
         $this->write();
-        return "Transferred campaign {$this->Title}";
+        return _t(__CLASS__ . '.UPLOADSUCCESS', 'Transferred campaign {title}', ['title' => $this->Title]);
     }
 
     /**
@@ -212,16 +248,31 @@ class SendyCampaign extends DataObject
         return 'admin/sendy/Syntro-SilverStripeSendy-Model-SendyCampaign/EditForm/field/Syntro-SilverStripeSendy-Model-SendyCampaign/item/' . $this->ID . '/edit';
     }
 
+    /**
+     * summarizedLabel - returns a label to summarize if this has been transferred
+     *
+     * @return string
+     */
     public function summarizedLabel()
     {
         return $this->IsTransferred ? '🟢' : '⚪️';
     }
 
+    /**
+     * getHTMLNewsletter - returns the HTML render of the Newsletter
+     *
+     * @return string
+     */
     public function getHTMLNewsletter()
     {
         return $this->renderWith(self::class);
     }
 
+    /**
+     * getPlainNewsletter - returns a plaintext representation
+     *
+     * @return string
+     */
     public function getPlainNewsletter()
     {
         return $this->ElementalArea->forTemplate()->Plain();

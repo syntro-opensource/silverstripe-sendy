@@ -3,3 +3,19 @@ en:
     MENUTITLE: Newsletter
   Syntro\SilverStripeSendy\Controller\CampaignPreviewController:
     PLEASELOGIN: You need to be logged in to preview Sendy campaigns.
+  Syntro\SilverStripeSendy\Model\SendyCampaign:
+    PERM_VIEW: View and preview campaigns
+    PERM_EDIT: Edit sendy campaigns
+    FIELDS_Title: Campaign Title
+    FIELDS_FromName: From Name
+    FIELDS_FromEmail: From Email
+    FIELDS_ReplyToEmail: Reply To Email
+    FIELDS_Subject: Subject
+    SUMMARY_Transferred: Uploaded
+    PREVIEW: Preview
+    UPLOAD: Upload to Sendy
+    UPLOADCONFIRM: You will not be able to edit this campaign anymore. Are you sure?
+    UPLOADSUCCESS: Successfully transferred campaign {title}
+    CAMPAIGNTRANSFERREDINFO:
+      This Campaign has been transferred to your sendy instance.
+      Please make further adjustments there.
