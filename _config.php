@@ -51,7 +51,19 @@ $editorConfig
             . "dd[id|class|title|dir],dl[id|class|title|dir],dt[id|class|title|dir]",
         'extended_valid_elements' => "img[class|src|alt|title|hspace|vspace|width|height|align|name"
             . "|usemap|data*],iframe[src|name|width|height|align|frameborder|marginwidth|marginheight|scrolling],"
-            . "object[width|height|data|type],param[name|value],map[class|name|id],area[shape|coords|href|target|alt]"
+            . "object[width|height|data|type],param[name|value],map[class|name|id],area[shape|coords|href|target|alt]",
+        'formats' => [
+            'aligncenter' => [ 'selector' => 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', 'styles' => ['text-align' => 'center']],
+            'alignleft' => [ 'selector' => 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', 'styles' => ['text-align' => 'left']],
+            'alignright' => [ 'selector' => 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', 'styles' => ['text-align' => 'right']],
+            'alignfull' => [ 'selector' => 'p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img,audio,video', 'styles' => ['text-align' => 'justify']]
+        ],
+        'style_formats' => [
+            [ 'title' => 'Align center', 'format' => 'aligncenter' ],
+            [ 'title' => 'Align left', 'format' => 'alignleft' ],
+            [ 'title' => 'Align right', 'format' => 'alignright' ],
+            [ 'title' => 'Justify', 'format' => 'alignfull' ],
+        ]
     ]);
 // enable ability to insert anchors
 $editorConfig->insertButtonsAfter('sslink', 'anchor');
