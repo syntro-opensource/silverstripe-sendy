@@ -41,6 +41,7 @@ class CampaignPreviewController extends Controller
     public function preview($request)
     {
         $id = $this->getRequest()->params()['ID'];
+        /** @var SendyCampaign|null */
         $campaign = SendyCampaign::get()->byID($id);
 
         if ($campaign && $campaign->canView()) {

@@ -4,6 +4,7 @@ namespace Syntro\SilverStripeSendy\Admin;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldExportButton;
 use SilverStripe\Forms\GridField\GridFieldImportButton;
 use SilverStripe\Forms\GridField\GridFieldPrintButton;
@@ -53,6 +54,7 @@ class SendyAdmin extends ModelAdmin
     {
         $form = parent::getEditForm($id, $fields);
         if ($this->modelClass === SendyCampaign::class) {
+            /** @var GridField */
             $listField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass));
             $config = $listField->getConfig();
             $config->removeComponentsByType([

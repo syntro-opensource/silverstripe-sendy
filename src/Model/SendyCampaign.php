@@ -4,7 +4,9 @@ namespace Syntro\SilverStripeSendy\Model;
 use SilverStripe\Forms\EmailField;
 use SilverStripe\Forms\TextField;
 use SilverStripe\Forms\LiteralField;
+use SilverStripe\Forms\FieldList;
 use SilverStripe\Security\Permission;
+use SilverStripe\Security\Member;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
@@ -260,7 +262,7 @@ class SendyCampaign extends DataObject
     /**
      * getHTMLNewsletter - returns the HTML render of the Newsletter
      *
-     * @return string
+     * @return DBHTMLText
      */
     public function getHTMLNewsletter()
     {
