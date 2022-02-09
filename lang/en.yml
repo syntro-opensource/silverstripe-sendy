@@ -1,3 +1,5 @@
 en:
   Syntro\SilverStripeSendy\Admin\SendyAdmin:
     MENUTITLE: Newsletter
+  Syntro\SilverStripeSendy\Controller\CampaignPreviewController:
+    PLEASELOGIN: You need to be logged in to preview Sendy campaigns.
