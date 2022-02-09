@@ -1,15 +1,18 @@
 <?php
 namespace Syntro\SilverStripeSendy\Admin;
 
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
 use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldExportButton;
+use SilverStripe\Forms\GridField\GridFieldImportButton;
+use SilverStripe\Forms\GridField\GridFieldPrintButton;
 use Syntro\SilverStripeSendy\Model\SendyCampaign;
 
-
 /**
- * Description
+ * Allows Users to manage campaigns
  *
- * @package silverstripe
- * @subpackage mysite
+ * @author Matthias Leutenegger
  */
 class SendyAdmin extends ModelAdmin
 {
@@ -39,5 +42,26 @@ class SendyAdmin extends ModelAdmin
      */
     private static $menu_title = 'Newsletter';
 
+    /**
+     * getEditForm - get the displayed edit form
+     *
+     * @param  int $id = null     the id of the record
+     * @param  FieldList $fields = null the fields
+     * @return Form
+     */
+    public function getEditForm($id = null, $fields = null)
+    {
+        $form = parent::getEditForm($id, $fields);
+        if ($this->modelClass === SendyCampaign::class) {
+            $listField = $form->Fields()->dataFieldByName($this->sanitiseClassName($this->modelClass));
+            $config = $listField->getConfig();
+            $config->removeComponentsByType([
+                GridFieldExportButton::class,
+                GridFieldImportButton::class,
+                GridFieldPrintButton::class
+            ]);
+        }
+        return $form;
+    }
 
 }
