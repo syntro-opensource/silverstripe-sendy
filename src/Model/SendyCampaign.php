@@ -110,6 +110,16 @@ class SendyCampaign extends DataObject
     }
 
     /**
+     * DataObject archive permissions
+     * @param Member $member the member to be checked
+     * @return boolean
+     */
+    public function canArchive($member = null)
+    {
+        return !$this->IsTransferred && Permission::check(self::PERMISSION_EDIT, 'any', $member);
+    }
+
+    /**
      * fieldLabels - get the field label titles
      *
      * @param  bool $includerelations = true wether to include relations
