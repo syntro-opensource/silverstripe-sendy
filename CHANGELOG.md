@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+<a name="1.0.3"></a>
+## [1.0.3] - 2022-02-18
+### 🐞 Fixed
+- Backend requirements (css, js) are no longer sent to Sendy
+
+### 🔧 Changed
+- preview & upload fields are no longer visible during campaign creation (closes [#3](https://github.com/syntro-opensource/silverstripe-sendy/issues/3))
+
+### 🗑 Removed
+- drop php 7.3 in tests
+
+
 <a name="1.0.2"></a>
 ## [1.0.2] - 2022-02-10
 ### 🐞 Fixed
@@ -33,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - doc states the fact that `Title` != `Subject`
 
 
-[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.2...HEAD
+[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.3...HEAD
+[1.0.3]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.0...1.0.1
