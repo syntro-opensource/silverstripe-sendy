@@ -10,6 +10,7 @@ use SilverStripe\Security\Member;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\ValidationResult;
 use SilverStripe\ORM\FieldType\DBHTMLText;
+use SilverStripe\View\SSViewer;
 use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
 use LeKoala\CmsActions\CustomAction;
@@ -317,7 +318,9 @@ class SendyCampaign extends DataObject
      */
     public function getHTMLNewsletter()
     {
-        return $this->renderWith(self::class);
+        $template = SSViewer::create(self::class);
+        $template->includeRequirements(false);
+        return $this->renderWith($template);
     }
 
     /**
