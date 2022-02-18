@@ -243,10 +243,10 @@ class SendyCampaign extends DataObject
         $transferAction->setShouldRefresh(true);
         $transferAction->setConfirmation(_t(__CLASS__ . '.UPLOADCONFIRM', 'You will not be able to edit this campaign anymore. Are you sure?'));
 
-        if ($this->canView()) {
+        if ($this->isInDB() && $this->canView()) {
             $actions->push($previewLink);
         }
-        if (!$this->IsTransferred && $this->canEdit()) {
+        if ($this->isInDB() && !$this->IsTransferred && $this->canEdit()) {
             $actions->push($transferAction);
         }
 
