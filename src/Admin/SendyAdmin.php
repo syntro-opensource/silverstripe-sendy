@@ -19,6 +19,7 @@ class SendyAdmin extends ModelAdmin
 {
     /**
      * Managed data objects for CMS
+     * @config
      * @var array
      */
     private static $managed_models = [
@@ -27,18 +28,21 @@ class SendyAdmin extends ModelAdmin
 
     /**
      * Menu icon for Left and Main CMS
+     * @config
      * @var string
      */
     private static $menu_icon_class = 'font-icon-p-mail';
 
     /**
      * URL Path for CMS
+     * @config
      * @var string
      */
     private static $url_segment = 'sendy';
 
     /**
      * Menu title for Left and Main CMS
+     * @config
      * @var string
      */
     private static $menu_title = 'Newsletter';
