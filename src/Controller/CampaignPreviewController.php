@@ -17,6 +17,7 @@ class CampaignPreviewController extends Controller
 {
     /**
      * Defines methods that can be called directly
+     * @config
      * @var array
      */
     private static $allowed_actions = [
@@ -26,6 +27,7 @@ class CampaignPreviewController extends Controller
 
     /**
      * Defines URL patterns.
+     * @config
      * @var array
      */
     private static $url_handlers = [

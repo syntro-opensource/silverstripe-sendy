@@ -30,12 +30,14 @@ class SendyCampaign extends DataObject
 
     /**
      * Defines the database table name
+     * @config
      *  @var string
      */
     private static $table_name = 'SendyCampaign';
 
     /**
      * Database fields
+     * @config
      * @var array
      */
     private static $db = [
@@ -50,6 +52,7 @@ class SendyCampaign extends DataObject
     /**
      * Defines summary fields commonly used in table columns
      * as a quick overview of the data for this dataobject
+     * @config
      * @var array
      */
     private static $summary_fields = [
@@ -60,6 +63,7 @@ class SendyCampaign extends DataObject
 
     /**
      * Defines a default list of filters for the search context
+     * @config
      * @var array
      */
     private static $searchable_fields = [
@@ -69,6 +73,7 @@ class SendyCampaign extends DataObject
 
     /**
      * Default sort ordering
+     * @config
      * @var array
      */
     private static $default_sort = [
