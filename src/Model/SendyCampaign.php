@@ -68,6 +68,15 @@ class SendyCampaign extends DataObject
     ];
 
     /**
+     * Default sort ordering
+     * @var array
+     */
+    private static $default_sort = [
+        'IsTransferred' => 'ASC',
+        'Created' => 'DESC'
+    ];
+
+    /**
      * providePermissions - provides CMS permissions
      *
      * @return array
