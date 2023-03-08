@@ -212,7 +212,7 @@ class SendyCampaign extends DataObject
         /** @var array|null $styles */
         $styles = $this->config()->get('styles');
 
-        if($styles && count($styles ?? []) > 0) ß
+        if($styles && count($styles ?? []) > 0)
         {
             $fields->addFieldToTab(
                 'Root.Main',
