@@ -101,12 +101,12 @@ class SendyCampaign extends DataObject
     {
         $styles = [];
         if (!($this->Style)) {
-            array_push($styles, "Syntro/SilverStripeSendy/Model/SendyCampaign");
+            array_push($styles, self::class);
         } else {
             array_push(
                 $styles,
-                "Syntro/SilverStripeSendy/Model/SendyCampaign_".$this->Style,
-                "Syntro/SilverStripeSendy/Model/SendyCampaign"
+                self::class."_".$this->Style,
+                self::class
             );
         }
 
