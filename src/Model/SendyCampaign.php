@@ -100,8 +100,7 @@ class SendyCampaign extends DataObject
     public function getStyles()
     {
         $styles = [];
-        if (!($this->Style))
-        {
+        if (!($this->Style)) {
             array_push($styles, "Syntro/SilverStripeSendy/Model/SendyCampaign");
         } else {
             array_push(
@@ -211,8 +210,7 @@ class SendyCampaign extends DataObject
 
         $styles = $this->config()->get('styles');
 
-        if (count($styles) > 0)
-        {
+        if (count($styles) > 0) {
             $fields->addFieldToTab(
                 'Root.Main',
                 $styleDropdownField = DropdownField::create('Style', 'Style', $styles),
