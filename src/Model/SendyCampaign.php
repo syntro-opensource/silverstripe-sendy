@@ -100,7 +100,7 @@ class SendyCampaign extends DataObject
     public function getStyles()
     {
         $styles = [];
-        if(!($this->Style))
+        if (!($this->Style))
         {
             array_push($styles, "Syntro/SilverStripeSendy/Model/SendyCampaign");
         } else {
@@ -209,15 +209,16 @@ class SendyCampaign extends DataObject
             'ElementalArea'
         );
 
+        /** @var array|null $styles */
         $styles = $this->config()->get('styles');
 
-        if($styles && count($styles ?? []) > 0)
+        if($styles && count($styles ?? []) > 0) ß
         {
             $fields->addFieldToTab(
                 'Root.Main',
                 $styleDropdownField = DropdownField::create('Style', 'Style', $styles),
                 'ElementalArea'
-            );
+                );
             $styleDropdownField->setHasEmptyDefault(true);
             $styleDropdownField->setEmptyString(_t("DNADesign\\Elemental\\Models\\BaseElement".'.CUSTOM_STYLES', 'Select a style..'));
         } else {
