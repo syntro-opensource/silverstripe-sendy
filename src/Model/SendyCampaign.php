@@ -209,16 +209,15 @@ class SendyCampaign extends DataObject
             'ElementalArea'
         );
 
-        /** @var array|null $styles */
         $styles = $this->config()->get('styles');
 
-        if($styles && count($styles ?? []) > 0)
+        if (count($styles) > 0)
         {
             $fields->addFieldToTab(
                 'Root.Main',
                 $styleDropdownField = DropdownField::create('Style', 'Style', $styles),
                 'ElementalArea'
-                );
+            );
             $styleDropdownField->setHasEmptyDefault(true);
             $styleDropdownField->setEmptyString(_t("DNADesign\\Elemental\\Models\\BaseElement".'.CUSTOM_STYLES', 'Select a style..'));
         } else {
