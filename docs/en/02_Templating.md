@@ -31,9 +31,8 @@ This builds the encapsulating Layout for every Newsletter.
 ### Using multiple styles
 Silverstripe Sendy supports multiple styles using the configuration API. The approriate style for a given newsletter can be set in its CMS interface.
 To configure styles, proceed as follows.
-1. Define your templates as key-value pairs in your app.yml. The value represents the front-facing name:
+1. Define your templates as key-value pairs in your config. The value represents the front-facing name:
 ```yaml
-# /app/_config/app.yml
 Syntro\SilverStripeSendy\Model\SendyCampaign:
   styles:
     red: Red Style
