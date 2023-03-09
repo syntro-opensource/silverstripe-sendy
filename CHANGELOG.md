@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+<a name="1.0.5"></a>
+## [1.0.5] - 2023-03-09
+### 🍰 Added
+- Newsletters can be created with different styles ([#8](https://github.com/syntro-opensource/silverstripe-sendy/issues/8))
+
+
 <a name="1.0.4"></a>
 ## [1.0.4] - 2022-07-21
 ### 🍰 Added
@@ -57,7 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - doc states the fact that `Title` != `Subject`
 
 
-[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.4...HEAD
+[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.5...HEAD
+[1.0.5]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.2...1.0.3
 [1.0.2]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.1...1.0.2
