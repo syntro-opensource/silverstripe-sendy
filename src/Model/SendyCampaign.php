@@ -15,6 +15,7 @@ use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Forms\HTMLEditor\HTMLEditorConfig;
 use LeKoala\CmsActions\CustomAction;
 use LeKoala\CmsActions\CustomLink;
+use SilverStripe\Forms\DropdownField;
 use Syntro\SilverStripeSendy\Connector;
 
 /**
@@ -47,6 +48,7 @@ class SendyCampaign extends DataObject
         'ReplyToEmail' => 'Varchar',
         'Subject' => 'Varchar',
         'IsTransferred' => 'Varchar',
+        'Style' => 'Varchar'
     ];
 
     /**
@@ -80,6 +82,36 @@ class SendyCampaign extends DataObject
         'IsTransferred' => 'ASC',
         'Created' => 'DESC'
     ];
+
+    /**
+     * Holds styles (format: <template name> => <human name>)
+     *
+     * @config
+     * @var array
+     */
+    private static $styles = [];
+
+    /**
+     * If no entry in Style field, return default style
+     * If there is entry in Style field, return that with default fallback
+     *
+     * @return array
+     */
+    public function getStyles()
+    {
+        $styles = [];
+        if (!($this->Style)) {
+            array_push($styles, self::class);
+        } else {
+            array_push(
+                $styles,
+                self::class."_".$this->Style,
+                self::class
+            );
+        }
+
+        return $styles;
+    }
 
     /**
      * providePermissions - provides CMS permissions
@@ -163,6 +195,7 @@ class SendyCampaign extends DataObject
         $fields->removeByName([
             'IsTransferred'
         ]);
+
         $fields->addFieldsToTab(
             'Root.Main',
             [
@@ -170,10 +203,25 @@ class SendyCampaign extends DataObject
                 TextField::create('FromName', $this->fieldLabel('FromName')),
                 EmailField::create('FromEmail', $this->fieldLabel('FromEmail')),
                 EmailField::create('ReplyToEmail', $this->fieldLabel('ReplyToEmail')),
-                TextField::create('Subject', $this->fieldLabel('Subject'))
+                TextField::create('Subject', $this->fieldLabel('Subject')),
             ],
             'ElementalArea'
         );
+
+        $styles = $this->config()->get('styles');
+
+        if (count($styles) > 0) {
+            $fields->addFieldToTab(
+                'Root.Main',
+                $styleDropdownField = DropdownField::create('Style', 'Style', $styles),
+                'ElementalArea'
+            );
+            $styleDropdownField->setHasEmptyDefault(true);
+            $styleDropdownField->setEmptyString(_t("DNADesign\\Elemental\\Models\\BaseElement".'.CUSTOM_STYLES', 'Select a style..'));
+        } else {
+            $fields->removeByName('Style');
+        }
+
         if ($this->IsTransferred) {
             $fields->removeByName([
                 'ElementalArea',
@@ -332,7 +380,7 @@ class SendyCampaign extends DataObject
      */
     public function getHTMLNewsletter()
     {
-        $template = SSViewer::create(self::class);
+        $template = SSViewer::create($this->getStyles());
         $template->includeRequirements(false);
         return $this->renderWith($template);
     }
