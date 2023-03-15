@@ -1,0 +1,25 @@
+DNADesign\Elemental\Models\ElementalArea:
+  SendyElementalArea:
+    Created: "2021-01-1 00:00:01"
+  SendyElementalAreaWithoutStyle:
+    Created: "2021-01-1 00:00:01"
+
+Syntro\SilverStripeSendy\Model\SendyCampaign:
+  SendyCampaignWithStyle:
+    Style: fancy
+    ElementalArea: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalArea
+  SendyCampaignWithoutStyle:
+    ElementalArea: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalAreaWithoutStyle
+
+Syntro\SilverStripeSendy\Dev\StylableNewsletterContent:
+  ContentWithStyle1:
+    Style: 1col
+    Parent: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalArea
+  ContentWithStyle2:
+    Style: 2col
+    Parent: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalArea
+  ContentWithoutStyle:
+    Parent: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalArea
+  ContentWithoutCampaignStyle:
+    Style: green
+    Parent: =>DNADesign\Elemental\Models\ElementalArea.SendyElementalAreaWithoutStyle
