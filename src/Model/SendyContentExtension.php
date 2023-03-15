@@ -22,8 +22,8 @@ class SendyContentExtension extends DataExtension
      * Enables styles by  appending style of associated SendyCampaign
      * and changing order so that new styles take precedence
      *
-     * @param array $templates
-     * @param string $suffix
+     * @param array  $templates Templates from the hooked function
+     * @param string  $suffix Suffix from the hooked function
      * @return void
      */
     public function updateRenderTemplates(&$templates, $suffix)
