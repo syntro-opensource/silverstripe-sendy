@@ -6,6 +6,11 @@ use DNADesign\Elemental\Models\BaseElement;
 use SilverStripe\Dev\TestOnly;
 use Syntro\SilverStripeSendy\Model\SendyContentExtension;
 
+/**
+ * For testing output of SendyContentExtension->updateRenderTemplates()
+ *
+ * author: Patrick Côté
+ */
 class StylableNewsletterContent extends BaseElement implements TestOnly
 {
     private static $table_name = 'Test content';
