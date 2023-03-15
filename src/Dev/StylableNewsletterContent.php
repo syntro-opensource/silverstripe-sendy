@@ -9,18 +9,51 @@ use Syntro\SilverStripeSendy\Model\SendyContentExtension;
 /**
  * For testing output of SendyContentExtension->updateRenderTemplates()
  *
- * author: Patrick Côté
+ * @author: Patrick Côté
  */
 class StylableNewsletterContent extends BaseElement implements TestOnly
 {
-    private static $table_name = 'Test content';
-    private static $singular_name = 'Sendy content';
-    private static $plural_name = 'Sendy contents';
-    private static $description = 'Simple content placeholder for Sendy';
+    /**
+     * Table name
+     *
+     * @var string
+     */
+    private static $table_name = 'TestObjects';
 
+    /**
+     * Singular name
+     *
+     * @var string
+     */
+    private static $singular_name = 'Test object';
+
+    /**
+     * Plural name
+     *
+     * @var string
+     */
+    private static $plural_name = 'Test objects';
+
+    /**
+     * Description
+     *
+     * @var string
+     */
+    private static $description = 'TestOnly object for testing';
+
+    /**
+     * Make sure we get the extension we want to test
+     *
+     * @var array
+     */
     private static $extensions = [
         SendyContentExtension::class,
     ];
 
+    /**
+     * Make sure we get correct holder template
+     *
+     * @var string
+     */
     private static $controller_template = 'NewsletterElementHolder';
 }
