@@ -9,9 +9,9 @@
         }
     ],
     "require": {
-        "silverstripe/cms": "^4",
-        "silverstripe/framework": "^4",
-        "dnadesign/silverstripe-elemental": "^4",
+        "silverstripe/cms": "^4 || ^5",
+        "silverstripe/framework": "^4 || ^5",
+        "dnadesign/silverstripe-elemental": "^4 || ^5",
         "lekoala/silverstripe-cms-actions": "^1.2"
     },
     "require-dev": {
