@@ -12,7 +12,7 @@
         "silverstripe/cms": "^4 || ^5",
         "silverstripe/framework": "^4 || ^5",
         "dnadesign/silverstripe-elemental": "^4 || ^5",
-        "lekoala/silverstripe-cms-actions": "^1.2"
+        "lekoala/silverstripe-cms-actions": "^1.4^"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.0",
