@@ -8,6 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+<a name="1.1.0"></a>
+## [1.1.0] - 2023-06-28
+### 🍰 Added
+- Block styling & documentation ([#10](https://github.com/syntro-opensource/silverstripe-sendy/issues/10))
+
+### Pull Requests
+- Merge pull request [#11](https://github.com/syntro-opensource/silverstripe-sendy/issues/11) from syntro-opensource/add/SS5-support
+
+
 <a name="1.0.5"></a>
 ## [1.0.5] - 2023-03-09
 ### 🍰 Added
@@ -63,7 +72,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - doc states the fact that `Title` != `Subject`
 
 
-[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.5...HEAD
+[Unreleased]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.5...1.1.0
 [1.0.5]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.4...1.0.5
 [1.0.4]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.3...1.0.4
 [1.0.3]: https://github.com/syntro-opensource/silverstripe-sendy/compare/1.0.2...1.0.3
